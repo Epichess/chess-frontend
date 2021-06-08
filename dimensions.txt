@@ -1,0 +1,12 @@
+profile images panel: 500*128, padding 10 24
+profile image panel picture: 80*80
+
+information panel: 500*400, margin 10 0 0
+
+buttons panel: 500*67, padding 16 24 0
+secondary buttons panel: 500*55, padding 30 24 25
+
+Game plate:
+profile informations player2: 576*40
+game plate: 576*576 (72*72 for a tile)
+profile informations player1: 576*40
