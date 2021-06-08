@@ -1,0 +1,11 @@
+K king
+Q queen
+R rook
+B bishop
+N knight
+P pawn
++ echec
+# echec et math
+x execute ((si pion colone de départ sinon notation) x case d'arrivée )
+O-O small rock
+O-O-O big rock
