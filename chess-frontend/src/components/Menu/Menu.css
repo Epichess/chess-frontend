@@ -1,0 +1,48 @@
+.MenuBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 367px;
+    height: 93px;
+    left: 50%;
+    top: 499px;
+    margin: 50px;
+}
+
+.PlayBtn {
+    left: 100px;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.SignupBtn {
+    border: 2px solid white;
+}
+
+.signupBtnText {
+    font-family: Bodoni MT, serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 42px;
+    line-height: 50px;
+    color: #ffffff;
+}
+
+.playBtnText {
+    font-family: Bodoni MT;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 42px;
+    line-height: 50px;
+
+    color: #000000;
+}
+
+.menuBackground {
+    display:flex;
+    align-items: center;
+    background-image: url("../../Menu2.png");
+    height: 100vh;
+    background-position: 0px,50px,50px,50px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
