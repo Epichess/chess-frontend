@@ -9,3 +9,4 @@ P pawn
 x execute ((si pion colone de départ sinon notation) x case d'arrivée )
 O-O small rock
 O-O-O big rock
+= (lorsqu'un pion devient autre chose, ex:  b8=Q ; pion en b8 devient queen )
