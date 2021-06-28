@@ -1,0 +1,17 @@
+.Game {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.MainComponents {
+  display: flex;
+  width: 98vw;
+  height: 98vh;
+  border: 2px solid red;
+  justify-content: space-between;
+}
+
+.MainComponents > * {
+  margin: 10px;
+}

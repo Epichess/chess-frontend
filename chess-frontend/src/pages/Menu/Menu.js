@@ -1,12 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import menuBackground from '../../Menu.png';
-import './Menu.css'
+import './Menu.scss'
+import {useHistory} from 'react-router-dom';
 
 const Menu = () => {
+    const history = useHistory();
+    const handdlePlayBtnClick = () => {
+        history.push('/Game');
+    }
     return (
         <div className="menuBackground">
-            <div className="MenuBtn PlayBtn">
+            <div className="MenuBtn PlayBtn" onClick={handdlePlayBtnClick}>
                 <div className="playBtnText">Play now</div>
             </div>
             <div className="MenuBtn SignupBtn">

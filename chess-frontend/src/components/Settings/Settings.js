@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Settings.css';
+import './Settings.scss';
 
 const Settings = () => (
   <div className="Settings">

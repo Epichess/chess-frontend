@@ -1,8 +1,8 @@
 import './App.css';
 import React from "react";
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
-import Menu from './components/Menu/Menu';
-import Game from "./components/Game/Game";
+import Menu from './pages/Menu/Menu';
+import Game from "./pages/Game/Game";
 import Settings from "./components/Settings/Settings";
 
 function App() {
