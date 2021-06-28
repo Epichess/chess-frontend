@@ -31,7 +31,7 @@ export default function Board() {
        };
 
        return (
-                  <Grid>
+                  <Grid className="Board">
                       <GameRow value="8"/>
                       <GameRow value="7"/>
                       <GameRow value="6"/>
