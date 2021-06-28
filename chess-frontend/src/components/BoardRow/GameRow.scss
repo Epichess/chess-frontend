@@ -1,7 +1,9 @@
-.GameRow {}
-
 .BoardCell {
   border: 1px solid green;
   width: 80px;
   height: 80px;
 }
+
+//.GameRow {
+//  flex-wrap: nowrap
+//}

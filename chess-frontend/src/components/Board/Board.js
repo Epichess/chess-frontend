@@ -1,45 +1,19 @@
 import './Board.scss';
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import FormLabel from '@material-ui/core/FormLabel';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import Radio from '@material-ui/core/Radio';
-import Paper from '@material-ui/core/Paper';
 import GameRow from "../BoardRow/GameRow";
 
-const useStyles = makeStyles((theme) => ({
-       root: {
-              flexGrow: 1,
-       },
-       paper: {
-              height: 140,
-              width: 100,
-       },
-       control: {
-              padding: theme.spacing(2),
-       },
-}));
-
 export default function Board() {
-       const [spacing, setSpacing] = React.useState(2);
-       const classes = useStyles();
-
-       const handleChange = (event) => {
-              setSpacing(Number(event.target.value));
-       };
-
        return (
                   <Grid className="Board">
-                      <GameRow value="8"/>
-                      <GameRow value="7"/>
-                      <GameRow value="6"/>
-                      <GameRow value="5"/>
-                      <GameRow value="4"/>
-                      <GameRow value="3"/>
-                      <GameRow value="2"/>
-                      <GameRow value="1" displayLetter={true}/>
+                      <GameRow value={8}/>
+                      <GameRow value={7}/>
+                      <GameRow value={6}/>
+                      <GameRow value={5}/>
+                      <GameRow value={4}/>
+                      <GameRow value={3}/>
+                      <GameRow value={2}/>
+                      <GameRow value={1} displayLetter={true}/>
                   </Grid>
        );
 }
@@ -86,7 +60,5 @@ const Boarde = () => {
             </div>
         );
 }
-
-
 
 export {Board};
