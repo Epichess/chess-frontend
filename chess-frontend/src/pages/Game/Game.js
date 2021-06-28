@@ -8,7 +8,7 @@ import Timer from "../../components/Timer/Timer";
 const Game = () => (
   <div className="Game">
       <div className="MainComponents">
-            <GameHistory/>
+          <GameHistory/>
           <Board/>
           <Timer/>
       </div>
