@@ -1,4 +1,6 @@
 .Board {
   border: 2px solid black;
-  min-width: 100vh;
+  background-image: url("../../Assets/Board_Classic_2_JPEG.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
