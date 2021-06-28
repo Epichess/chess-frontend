@@ -7,6 +7,11 @@
     left: 50%;
     top: 499px;
     margin: 50px;
+    cursor: pointer;
+}
+
+.MenuBtn:hover > .MenuBtnText{
+    font-size: 45px;
 }
 
 .PlayBtn {

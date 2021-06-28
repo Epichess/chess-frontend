@@ -12,10 +12,10 @@ const Menu = () => {
     return (
         <div className="menuBackground">
             <div className="MenuBtn PlayBtn" onClick={handdlePlayBtnClick}>
-                <div className="playBtnText">Play now</div>
+                <div className="MenuBtnText playBtnText">Play now</div>
             </div>
             <div className="MenuBtn SignupBtn">
-                <div className="signupBtnText">Sign Up</div>
+                <div className="MenuBtnText signupBtnText">Sign Up</div>
             </div>
 
         </div>
