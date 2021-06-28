@@ -32,14 +32,14 @@ export default function Board() {
 
        return (
                   <Grid>
-                      <GameRow></GameRow>
-                      <GameRow></GameRow>
-                      <GameRow></GameRow>
-                      <GameRow></GameRow>
-                      <GameRow></GameRow>
-                      <GameRow></GameRow>
-                      <GameRow></GameRow>
-                      <GameRow></GameRow>
+                      <GameRow/>
+                      <GameRow/>
+                      <GameRow/>
+                      <GameRow/>
+                      <GameRow/>
+                      <GameRow/>
+                      <GameRow/>
+                      <GameRow/>
                   </Grid>
        );
 }
