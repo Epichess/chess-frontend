@@ -2,7 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './BoardCell.scss';
 import Grid from "@material-ui/core/Grid";
-import wp from '../../../Assets/Pieces/setBlackWhiteMask2_13.png';
+import wp from '../../../Assets/Pieces/whitePawn.png';
+import wr from '../../../Assets/Pieces/whiteRook.png';
+import wn from '../../../Assets/Pieces/whiteKnight.png';
+import wb from '../../../Assets/Pieces/whiteBishop.png';
+import wq from '../../../Assets/Pieces/whiteQueen.png';
+import wk from '../../../Assets/Pieces/whiteKing.png';
+import bp from '../../../Assets/Pieces/blackPawn.png';
+import br from '../../../Assets/Pieces/blackRook.png';
+import bn from '../../../Assets/Pieces/blackKnight.png';
+import bb from '../../../Assets/Pieces/blackBishop.png';
+import bq from '../../../Assets/Pieces/blackQueen.png';
+import bk from '../../../Assets/Pieces/blackKing.png';
 
 const pieceAssoc = {
     'wp': wp,
