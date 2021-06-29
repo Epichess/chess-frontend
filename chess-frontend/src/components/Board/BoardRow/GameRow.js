@@ -94,7 +94,7 @@ const GameRow = ({value, displayLetter = false}) => {
         return (
             <Grid className="GameRow" container justify="center"  style={{"flexWrap": "nowrap"}}>
                 {pieces.map((myPiece, i) =>
-                    <BoardCell value={value} key={i} letter={letters[i]} piece={myPiece} displayNb={i === 0}/>
+                    <BoardCell value={value} key={i} letter={letters[i]} piece={myPiece} displayNb={i === 0} onClick={console.log("you clicked")}g/>
                 )}
             </Grid>
         )
@@ -103,7 +103,7 @@ const GameRow = ({value, displayLetter = false}) => {
         return (
             <Grid className="GameRow" container justify="center"  style={{"flexWrap": "nowrap"}}>
                 {pieces.map((myPiece, i) =>
-                    <BoardCell value={value} key={i} piece={myPiece} displayNb={i === 0}/>
+                    <BoardCell value={value} key={i} piece={myPiece} displayNb={i === 0} onClick={console.log("you clicked")}/>
                 )}
             </Grid>
         )

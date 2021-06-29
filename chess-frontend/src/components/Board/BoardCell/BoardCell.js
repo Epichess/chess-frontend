@@ -44,6 +44,7 @@ const BoardCell = ({value, displayNb = false, letter, piece}) => {
                 <div className="BoardCell BoardCellLetter">
                     <img height="100%" width="100%" src={pieceAssoc[piece]}></img>
                     {/*{letter}*/}
+
                 </div>
         )
     }
