@@ -5,11 +5,20 @@ import GameRow from "./BoardRow/GameRow";
 
 export default function Board() {
     const [oldMove, setOldMove] = useState([]);
-    const [currentMove, setCurrentMove] = useState('');
+    const [currentMove, setCurrentMove] = useState([]);
 
     const receiveChildValue = (value) => {
         console.log("Super Parent received value from child: " + value); // value is 42
-        setCurrentMove(value);
+        if (currentMove.length === 0) {
+            setCurrentMove(value);
+        }
+        else {
+            if (currentMove[0] !== value[0]) {
+                    currentMove[1].style = '';
+                console.log('not same values');
+            }
+            setCurrentMove(value);
+        }
     }
 
        return (

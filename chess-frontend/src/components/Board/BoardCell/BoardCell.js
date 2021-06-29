@@ -37,7 +37,7 @@ const BoardCell = ({value, displayNb = false, letter, dispLetter, piece, sentVal
 
     const dispCellInfos = (e) => {
         if (piece !== 'empty') {
-            sentValueToParent(e.currentTarget);
+            sentValueToParent([letter + value, e.currentTarget]);
             console.log(letter + value);
             console.log(e.currentTarget);
             setIsClicked(!isClicked);
