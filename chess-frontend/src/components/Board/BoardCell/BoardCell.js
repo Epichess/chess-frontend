@@ -2,18 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './BoardCell.scss';
 import Grid from "@material-ui/core/Grid";
-import wp from '../../../Assets/Pieces/whitePawn.png';
-import wr from '../../../Assets/Pieces/whiteRook.png';
-import wn from '../../../Assets/Pieces/whiteKnight.png';
-import wb from '../../../Assets/Pieces/whiteBishop.png';
-import wq from '../../../Assets/Pieces/whiteQueen.png';
-import wk from '../../../Assets/Pieces/whiteKing.png';
-import bp from '../../../Assets/Pieces/blackPawn.png';
-import br from '../../../Assets/Pieces/blackRook.png';
-import bn from '../../../Assets/Pieces/blackKnight.png';
-import bb from '../../../Assets/Pieces/blackBishop.png';
-import bq from '../../../Assets/Pieces/blackQueen.png';
-import bk from '../../../Assets/Pieces/blackKing.png';
+import wp from '../../../Assets/Pieces/wp.svg';
+import wr from '../../../Assets/Pieces/wr.svg';
+import wn from '../../../Assets/Pieces/wn.svg';
+import wb from '../../../Assets/Pieces/wb.svg';
+import wq from '../../../Assets/Pieces/wq.svg';
+import wk from '../../../Assets/Pieces/wk.svg';
+import bp from '../../../Assets/Pieces/bp.svg';
+import br from '../../../Assets/Pieces/br.svg';
+import bn from '../../../Assets/Pieces/bn.svg';
+import bb from '../../../Assets/Pieces/bb.svg';
+import bq from '../../../Assets/Pieces/bq.svg';
+import bk from '../../../Assets/Pieces/bk.svg';
 
 const pieceAssoc = {
     'wp': wp,
@@ -44,7 +44,6 @@ const BoardCell = ({value, displayNb = false, letter, piece}) => {
                 <div className="BoardCell BoardCellLetter">
                     <img height="100%" width="100%" src={pieceAssoc[piece]}></img>
                     {/*{letter}*/}
-
                 </div>
         )
     }
