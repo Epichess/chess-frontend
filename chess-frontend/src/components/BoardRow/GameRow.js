@@ -6,40 +6,40 @@ import BoardCell from "../BoardCell/BoardCell";
 
 const initBlackFirstRow = () => {
     return  [
-        'wp',
-        'wp',
-        'wp',
-        'wp',
-        'wp',
-        'wp',
-        'wp',
-        'wp'
+        'br',
+        'bn',
+        'bb',
+        'bq',
+        'bk',
+        'bb',
+        'bn',
+        'br'
     ];
 }
 
 const initBlackSecondRow = () => {
     return  [
-        'wp',
-        'wp',
-        'wp',
-        'wp',
-        'wp',
-        'wp',
-        'wp',
-        'wp'
+        'bp',
+        'bp',
+        'bp',
+        'bp',
+        'bp',
+        'bp',
+        'bp',
+        'bp'
     ];
 }
 
 const initWhiteFirstRow = () => {
     return  [
-        'wp',
-        'wp',
-        'wp',
-        'wp',
-        'wp',
-        'wp',
-        'wp',
-        'wp'
+        'wr',
+        'wn',
+        'wb',
+        'wq',
+        'wk',
+        'wb',
+        'wn',
+        'wr'
     ];
 }
 
@@ -105,14 +105,6 @@ const GameRow = ({value, displayLetter = false}) => {
                 {pieces.map((myPiece, i) =>
                     <BoardCell value={value} key={i} piece={myPiece} displayNb={i === 0}/>
                 )}
-                {/*<BoardCell value={value} displayNb={true} piece={pieces[0]}/>*/}
-                {/*<BoardCell value={value} piece={pieces[1]}/>*/}
-                {/*<BoardCell value={value} piece={pieces[2]}/>*/}
-                {/*<BoardCell value={value} piece={pieces[3]}/>*/}
-                {/*<BoardCell value={value} piece={pieces[4]}/>*/}
-                {/*<BoardCell value={value} piece={pieces[5]}/>*/}
-                {/*<BoardCell value={value} piece={pieces[6]}/>*/}
-                {/*<BoardCell value={value} piece={pieces[7]}/>*/}
             </Grid>
         )
 };
