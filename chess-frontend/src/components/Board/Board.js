@@ -1,19 +1,27 @@
 import './Board.scss';
-import React from 'react';
+import React, {useState} from 'react';
 import Grid from '@material-ui/core/Grid';
 import GameRow from "./BoardRow/GameRow";
 
 export default function Board() {
+    const [oldMove, setOldMove] = useState([]);
+    const [currentMove, setCurrentMove] = useState('');
+
+    const receiveChildValue = (value) => {
+        console.log("Super Parent received value from child: " + value); // value is 42
+        setCurrentMove(value);
+    }
+
        return (
                   <Grid className="Board">
-                      <GameRow value={8}/>
-                      <GameRow value={7}/>
-                      <GameRow value={6}/>
-                      <GameRow value={5}/>
-                      <GameRow value={4}/>
-                      <GameRow value={3}/>
-                      <GameRow value={2}/>
-                      <GameRow value={1} displayLetter={true}/>
+                      <GameRow value={8} sentValueToParent={receiveChildValue}/>
+                      <GameRow value={7} sentValueToParent={receiveChildValue}/>
+                      <GameRow value={6} sentValueToParent={receiveChildValue}/>
+                      <GameRow value={5} sentValueToParent={receiveChildValue}/>
+                      <GameRow value={4} sentValueToParent={receiveChildValue}/>
+                      <GameRow value={3} sentValueToParent={receiveChildValue}/>
+                      <GameRow value={2} sentValueToParent={receiveChildValue}/>
+                      <GameRow value={1} sentValueToParent={receiveChildValue} displayLetter={true}/>
                   </Grid>
        );
 }

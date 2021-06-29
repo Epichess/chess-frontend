@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import './BoardCell.scss';
 import Grid from "@material-ui/core/Grid";
@@ -30,34 +30,54 @@ const pieceAssoc = {
     'bk': bk,
 }
 
-const BoardCell = ({value, displayNb = false, letter, piece}) => {
-    if (displayNb && letter) {
+const BoardCell = ({value, displayNb = false, letter, dispLetter, piece, sentValueToParent}) => {
+    const [bgColor, setBgColor] = useState('rgba(246,246,105, 0.5)');
+    const [isClicked, setIsClicked] = useState(false);
+
+
+    const dispCellInfos = (e) => {
+        if (piece !== 'empty') {
+            sentValueToParent(e.currentTarget);
+            console.log(letter + value);
+            console.log(e.currentTarget);
+            setIsClicked(!isClicked);
+            e.currentTarget.style = isClicked ?  `` : `background: ${bgColor}`;
+        }
+    }
+
+
+    if (piece === 'empty') {
         return (
-            <div className="BoardCell BoardCellLetterNumber">
-                <img height="100%" width="100%" src={pieceAssoc[piece]}></img>
-                {/*{letter}*/}
+            <div className="BoardCell BoardCellLetterNumber" onClick={dispCellInfos}>
             </div>
         )
     }
-    if (letter) {
+    if (displayNb && dispLetter) {
         return (
-                <div className="BoardCell BoardCellLetter">
+            <div className="BoardCell BoardCellLetterNumber" onClick={dispCellInfos}>
+                <img height="100%" width="100%" src={pieceAssoc[piece]}></img>
+                {letter}
+            </div>
+        )
+    }
+    if (dispLetter) {
+        return (
+                <div className="BoardCell BoardCellLetter" onClick={dispCellInfos}>
                     <img height="100%" width="100%" src={pieceAssoc[piece]}></img>
-                    {/*{letter}*/}
-
+                    {letter}
                 </div>
         )
     }
     else if (displayNb)
         return (
-            <div className="BoardCell">
+            <div className="BoardCell" onClick={dispCellInfos}>
                 <img height="100%" width="100%" src={pieceAssoc[piece]}></img>
                 {/*{value}*/}
             </div>
         )
     else
     return (
-            <div className="BoardCell">
+            <div className="BoardCell" onClick={dispCellInfos}>
                 <img height="100%" width="100%" src={pieceAssoc[piece]}></img>
             </div>
     );
