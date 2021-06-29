@@ -1,7 +1,7 @@
 import './Board.scss';
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import GameRow from "../BoardRow/GameRow";
+import GameRow from "./BoardRow/GameRow";
 
 export default function Board() {
        return (

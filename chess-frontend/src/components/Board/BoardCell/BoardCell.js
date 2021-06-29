@@ -2,12 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './BoardCell.scss';
 import Grid from "@material-ui/core/Grid";
-import wp from '../../Assets/Pieces/setBlackWhiteMask2_13.png';
-
+import wp from '../../../Assets/Pieces/setBlackWhiteMask2_13.png';
 
 const pieceAssoc = {
     'wp': wp,
-
+    'wr': wr,
+    'wn': wn,
+    'wb': wb,
+    'wq': wq,
+    'wk': wk,
+    'bp': bp,
+    'br': br,
+    'bn': bn,
+    'bb': bb,
+    'bq': bq,
+    'bk': bk,
 }
 
 const BoardCell = ({value, displayNb = false, letter, piece}) => {
