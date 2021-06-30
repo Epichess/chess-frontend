@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import './BoardCell.scss';
 import Grid from "@material-ui/core/Grid";
@@ -30,18 +30,27 @@ const pieceAssoc = {
     'bk': bk,
 }
 
-const BoardCell = ({value, displayNb = false, letter, dispLetter, piece, sentValueToParent}) => {
+const BoardCell = ({value, displayNb = false, letter, dispLetter, piece, sentValueToParent, resetIsClicked = false}) => {
     const [bgColor, setBgColor] = useState('rgba(246,246,105, 0.5)');
     const [isClicked, setIsClicked] = useState(false);
 
 
+    useEffect(() => {
+        console.log(isClicked);
+    }, [isClicked]);
+
     const dispCellInfos = (e) => {
         if (piece !== 'empty') {
             sentValueToParent([letter + value, e.currentTarget]);
+            if (resetIsClicked === true) {
+                console.log('reset is clicked');
+                setIsClicked(false);
+            }
+            else
+                setIsClicked(!isClicked);
+            e.currentTarget.style = isClicked ?  `` : `background: ${bgColor}`;
             console.log(letter + value);
             console.log(e.currentTarget);
-            setIsClicked(!isClicked);
-            e.currentTarget.style = isClicked ?  `` : `background: ${bgColor}`;
         }
     }
 
@@ -62,10 +71,10 @@ const BoardCell = ({value, displayNb = false, letter, dispLetter, piece, sentVal
     }
     if (dispLetter) {
         return (
-                <div className="BoardCell BoardCellLetter" onClick={dispCellInfos}>
-                    <img height="100%" width="100%" src={pieceAssoc[piece]}></img>
-                    {letter}
-                </div>
+            <div className="BoardCell BoardCellLetter" onClick={dispCellInfos}>
+                <img height="100%" width="100%" src={pieceAssoc[piece]}></img>
+                {letter}
+            </div>
         )
     }
     else if (displayNb)
@@ -76,11 +85,11 @@ const BoardCell = ({value, displayNb = false, letter, dispLetter, piece, sentVal
             </div>
         )
     else
-    return (
+        return (
             <div className="BoardCell" onClick={dispCellInfos}>
                 <img height="100%" width="100%" src={pieceAssoc[piece]}></img>
             </div>
-    );
+        );
 }
 
 BoardCell.propTypes = {};
