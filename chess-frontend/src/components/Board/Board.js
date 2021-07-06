@@ -11,17 +11,22 @@ export default function Board() {
     const receiveChildValue = (value) => {
         console.log("Super Parent received value from child: " + value);
         if (currentMove.length === 0) {
+            console.log("setCurrentMove(value);");
             setCurrentMove(value);
+            console.log("setResetIsClicked(false);");
             setResetIsClicked(false);
         }
         else {
             if (currentMove[0] !== value[0]) {
                 currentMove[1].style = '';
+                console.log("setResetIsClicked(true);");
                 setResetIsClicked(true);
                 console.log('not same values');
             }
             else
+                console.log("setResetIsClicked(false);");
                 setResetIsClicked(false);
+            console.log("setCurrentMove(value);");
             setCurrentMove(value);
         }
     }

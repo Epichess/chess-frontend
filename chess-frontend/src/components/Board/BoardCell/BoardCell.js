@@ -49,9 +49,9 @@ const BoardCell = ({value, displayNb = false, letter, dispLetter, piece, sentVal
             else
                 setIsClicked(!isClicked);
             e.currentTarget.style = isClicked ?  `` : `background: ${bgColor}`;
-            console.log(letter + value);
             console.log(e.currentTarget);
         }
+        console.log(letter + value);
     }
 
 
