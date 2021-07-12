@@ -1,5 +1,5 @@
 import './Board.scss';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Grid from '@material-ui/core/Grid';
 import GameRow from "./BoardRow/GameRow";
 
@@ -8,39 +8,46 @@ export default function Board() {
     const [currentMove, setCurrentMove] = useState([]);
     const [resetIsClicked, setResetIsClicked] = useState(false);
 
+    useEffect(() => {
+        console.log('current move: ', currentMove);
+    }, [currentMove])
+
+    useEffect(() => {
+        console.log('old move: ', oldMove);
+    }, [oldMove])
+
     const receiveChildValue = (value) => {
-        console.log("Super Parent received value from child: " + value);
-        if (currentMove.length === 0) {
-            console.log("setCurrentMove(value);");
-            setCurrentMove(value);
-            console.log("setResetIsClicked(false);");
-            setResetIsClicked(false);
+        if (currentMove.length === 0 && currentMove[0] !== value) {
+            setCurrentMove([value])
         }
-        else {
-            if (currentMove[0] !== value[0]) {
-                currentMove[1].style = '';
-                console.log("setResetIsClicked(true);");
-                setResetIsClicked(true);
-                console.log('not same values');
+        else if (currentMove.length === 1 && currentMove[0] !== value) {
+            const ApiRes = 'ok';
+            if (ApiRes === 'ok') {
+                setOldMove([...currentMove, value]);
+                setCurrentMove([]);
             }
-            else
-                console.log("setResetIsClicked(false);");
-                setResetIsClicked(false);
-            console.log("setCurrentMove(value);");
-            setCurrentMove(value);
+            else {
+                //afficher des background en rouge
+            }
+
         }
+        else if (currentMove[0] === value) {
+            setCurrentMove([]);
+        }
+        else
+            setCurrentMove([currentMove[0], value]);
     }
 
     return (
         <Grid className="Board">
-            <GameRow value={8} sentValueToParent={receiveChildValue} resetIsClicked={resetIsClicked}/>
-            <GameRow value={7} sentValueToParent={receiveChildValue} resetIsClicked={resetIsClicked}/>
-            <GameRow value={6} sentValueToParent={receiveChildValue} resetIsClicked={resetIsClicked}/>
-            <GameRow value={5} sentValueToParent={receiveChildValue} resetIsClicked={resetIsClicked}/>
-            <GameRow value={4} sentValueToParent={receiveChildValue} resetIsClicked={resetIsClicked}/>
-            <GameRow value={3} sentValueToParent={receiveChildValue} resetIsClicked={resetIsClicked}/>
-            <GameRow value={2} sentValueToParent={receiveChildValue} resetIsClicked={resetIsClicked}/>
-            <GameRow value={1} sentValueToParent={receiveChildValue} resetIsClicked={resetIsClicked} displayLetter={true}/>
+            <GameRow value={8} sentValueToParent={receiveChildValue} currentMove={currentMove}/>
+            <GameRow value={7} sentValueToParent={receiveChildValue} currentMove={currentMove}/>
+            <GameRow value={6} sentValueToParent={receiveChildValue} currentMove={currentMove}/>
+            <GameRow value={5} sentValueToParent={receiveChildValue} currentMove={currentMove}/>
+            <GameRow value={4} sentValueToParent={receiveChildValue} currentMove={currentMove}/>
+            <GameRow value={3} sentValueToParent={receiveChildValue} currentMove={currentMove}/>
+            <GameRow value={2} sentValueToParent={receiveChildValue} currentMove={currentMove}/>
+            <GameRow value={1} sentValueToParent={receiveChildValue} displayLetter={true} currentMove={currentMove}/ >
         </Grid>
     );
 }

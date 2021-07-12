@@ -30,40 +30,38 @@ const pieceAssoc = {
     'bk': bk,
 }
 
-const BoardCell = ({value, displayNb = false, letter, dispLetter, piece, sentValueToParent, resetIsClicked = false}) => {
-    const [bgColor, setBgColor] = useState('rgba(246,246,105, 0.5)');
+const BoardCell = ({value, displayNb = false, letter, dispLetter, piece, sentValueToParent, currentMove}) => {
+    const [bgColor, setBgColor] = useState('');
     const [isClicked, setIsClicked] = useState(false);
 
+    useEffect(() => {
+        if ((letter + value) !== currentMove[0]) {
+            setBgColor('');
+            setIsClicked(false);
+        }
+    }, [currentMove])
 
     useEffect(() => {
-        console.log(isClicked);
-    }, [isClicked]);
+        setBgColor(isClicked ? 'rgba(246,246,105, 0.5)' : '');
+    }, [isClicked])
+
 
     const dispCellInfos = (e) => {
-        if (piece !== 'empty') {
-            sentValueToParent([letter + value, e.currentTarget]);
-            if (resetIsClicked === true) {
-                console.log('reset is clicked');
-                setIsClicked(false);
-            }
-            else
-                setIsClicked(!isClicked);
-            e.currentTarget.style = isClicked ?  `` : `background: ${bgColor}`;
-            console.log(e.currentTarget);
-        }
-        console.log(letter + value);
+        console.log('piece', piece);
+        setIsClicked(!isClicked);
+        sentValueToParent(letter + value);
     }
 
 
     if (piece === 'empty') {
         return (
-            <div className="BoardCell BoardCellLetterNumber" onClick={dispCellInfos}>
+            <div className="BoardCell BoardCellLetterNumber" onClick={dispCellInfos} style={{backgroundColor: bgColor}}>
             </div>
         )
     }
     if (displayNb && dispLetter) {
         return (
-            <div className="BoardCell BoardCellLetterNumber" onClick={dispCellInfos}>
+            <div className="BoardCell BoardCellLetterNumber" onClick={dispCellInfos} style={{backgroundColor: bgColor}}>
                 <img height="100%" width="100%" src={pieceAssoc[piece]}></img>
                 {letter}
             </div>
@@ -71,29 +69,24 @@ const BoardCell = ({value, displayNb = false, letter, dispLetter, piece, sentVal
     }
     if (dispLetter) {
         return (
-            <div className="BoardCell BoardCellLetter" onClick={dispCellInfos}>
+            <div className="BoardCell BoardCellLetter" onClick={dispCellInfos} style={{backgroundColor: bgColor}}>
                 <img height="100%" width="100%" src={pieceAssoc[piece]}></img>
                 {letter}
             </div>
         )
-    }
-    else if (displayNb)
+    } else if (displayNb)
         return (
-            <div className="BoardCell" onClick={dispCellInfos}>
+            <div className="BoardCell" onClick={dispCellInfos} style={{backgroundColor: bgColor}}>
                 <img height="100%" width="100%" src={pieceAssoc[piece]}></img>
                 {/*{value}*/}
             </div>
         )
     else
         return (
-            <div className="BoardCell" onClick={dispCellInfos}>
+            <div className="BoardCell" onClick={dispCellInfos} style={{backgroundColor: bgColor}}>
                 <img height="100%" width="100%" src={pieceAssoc[piece]}></img>
             </div>
         );
 }
-
-BoardCell.propTypes = {};
-
-BoardCell.defaultProps = {};
 
 export default BoardCell;
