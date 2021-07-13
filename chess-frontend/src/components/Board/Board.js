@@ -19,7 +19,8 @@ export default function Board() {
     }, [oldMove])
 
     const receiveChildValue = (value) => {
-        if (currentMove.length === 0 && currentMove[0] !== value) {
+        if (currentMove.length === 0) {
+            console.log('received from child: ', value);
             setCurrentMove([value])
         }
         else if (currentMove.length === 1 && currentMove[0] !== value || moveErr === true) {
@@ -28,8 +29,6 @@ export default function Board() {
                 setCurrentMove([value]);
                 return;
             }
-            else
-                setCurrentMove([...currentMove, value]);
             const ApiRes = 'ok';
             if (ApiRes === 'ok') {
                 console.log('server said OK');

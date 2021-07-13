@@ -42,7 +42,7 @@ const BoardCell = ({value, displayNb = false, letter, dispLetter, piece, sentVal
             setBgColor('rgba(246,246,105, 0.5)');
         if (oldMove.length === 2 && (letter + value) === oldMove[0]) {
             console.log('move demandé');
-            let imgObj = document.getElementById(piece)
+            let imgObj = document.getElementById(piece);
             var oldParent = document.getElementById(oldMove[0]);
             var newParent = document.getElementById(oldMove[1]);
             newParent.appendChild(oldParent.childNodes[0]);
@@ -69,13 +69,13 @@ const BoardCell = ({value, displayNb = false, letter, dispLetter, piece, sentVal
 
     const dispCellInfos = (e) => {
         //console.log(document.getElementById(piece));
-        if(e.target.id==''){
-            console.log("You clicked: "+e.target.parentNode.parentNode.id);
-        }
-        else{
-            console.log("You clicked: "+e.target.id);
-        }
-        
+        // if(e.target.id==''){
+        //     console.log("You clicked: "+e.target.parentNode.parentNode.id);
+        // }
+        // else{
+        //     console.log("You clicked: "+e.target.id);
+        // }
+
         console.log('piece', piece);
         setIsClicked(!isClicked);
         sentValueToParent(letter + value);
@@ -91,9 +91,7 @@ const BoardCell = ({value, displayNb = false, letter, dispLetter, piece, sentVal
     if (displayNb && dispLetter) {
         return (
             <div id={letter+value} className="BoardCell BoardCellLetterNumber" onClick={dispCellInfos} style={{backgroundColor: bgColor}}>
-                <div id={piece}>
-                    <img height="100%" width="100%" src={pieceAssoc[piece]}></img>
-                </div>
+                <img style={{pointerEvents: 'none'}} id={piece} height="100%" width="100%" src={pieceAssoc[piece]}></img>
                 {letter}
             </div>
         )
@@ -101,27 +99,21 @@ const BoardCell = ({value, displayNb = false, letter, dispLetter, piece, sentVal
     if (dispLetter) {
         return (
             <div id={letter+value} className="BoardCell BoardCellLetter" onClick={dispCellInfos} style={{backgroundColor: bgColor}}>
-                <div id={piece}>
-                    <img height="100%" width="100%" src={pieceAssoc[piece]}></img>
-                </div>
+                <img style={{pointerEvents: 'none'}} id={piece} height="100%" width="100%" src={pieceAssoc[piece]}></img>
                 {letter}
             </div>
         )
     } else if (displayNb)
         return (
             <div id={letter+value} className="BoardCell" onClick={dispCellInfos} style={{backgroundColor: bgColor}}>
-                <div id={piece}>
-                    <img height="100%" width="100%" src={pieceAssoc[piece]}></img>
-                </div>
+                <img style={{pointerEvents: 'none'}} id={piece} height="100%" width="100%" src={pieceAssoc[piece]}></img>
                 {/*{value}*/}
             </div>
         )
     else
         return (
             <div id={letter+value} className="BoardCell" onClick={dispCellInfos} style={{backgroundColor: bgColor}}>
-                <div id={piece}>
-                    <img height="100%" width="100%" src={pieceAssoc[piece]}></img>
-                </div>
+                <img  style={{pointerEvents: 'none'}} id={piece} height="100%" width="100%" src={pieceAssoc[piece]}></img>
             </div>
         );
 }
