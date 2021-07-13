@@ -40,6 +40,13 @@ const BoardCell = ({value, displayNb = false, letter, dispLetter, piece, sentVal
     useEffect(() => {
         if ((letter + value) === oldMove[0] || (letter + value) === oldMove[1])
             setBgColor('rgba(246,246,105, 0.5)');
+        if (oldMove.length === 2 && (letter + value) === oldMove[0]) {
+            console.log('move demandé');
+            let imgObj = document.getElementById(piece)
+            var oldParent = document.getElementById(oldMove[0]);
+            var newParent = document.getElementById(oldMove[1]);
+            newParent.appendChild(oldParent.childNodes[0]);
+        }
     }, [oldMove])
 
     useEffect(() => {
