@@ -4,7 +4,7 @@ import './GameRow.scss';
 import Grid from "@material-ui/core/Grid";
 import BoardCell from "../BoardCell/BoardCell";
 
-const GameRow = ({value, displayLetter = false, sentValueToParent, currentMove}) => {
+const GameRow = ({value, displayLetter = false, sentValueToParent, currentMove, oldMove, moveErr}) => {
     const receiveChildValue = (value) => {
         sentValueToParent(value);
     };
@@ -92,7 +92,7 @@ const GameRow = ({value, displayLetter = false, sentValueToParent, currentMove})
         return (
             <Grid className="GameRow" container justify="center"  style={{"flexWrap": "nowrap"}}>
                 {pieces.map((myPiece, i) =>
-                    <BoardCell value={value} key={i} letter={letters[i]} piece={myPiece} displayNb={i === 0} sentValueToParent={receiveChildValue} currentMove={currentMove}/>
+                    <BoardCell value={value} key={i} letter={letters[i]} piece={myPiece} displayNb={i === 0} sentValueToParent={receiveChildValue} currentMove={currentMove} oldMove={oldMove} moveErr={moveErr}/>
                 )}
             </Grid>
         )

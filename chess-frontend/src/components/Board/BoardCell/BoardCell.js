@@ -15,6 +15,9 @@ import bb from '../../../Assets/Pieces/bb.svg';
 import bq from '../../../Assets/Pieces/bq.svg';
 import bk from '../../../Assets/Pieces/bk.svg';
 
+import { useCallback } from 'react'
+
+
 const pieceAssoc = {
     'wp': wp,
     'wr': wr,
@@ -30,20 +33,30 @@ const pieceAssoc = {
     'bk': bk,
 }
 
-const BoardCell = ({value, displayNb = false, letter, dispLetter, piece, sentValueToParent, currentMove}) => {
+const BoardCell = ({value, displayNb = false, letter, dispLetter, piece, sentValueToParent, currentMove, oldMove, moveErr}) => {
     const [bgColor, setBgColor] = useState('');
     const [isClicked, setIsClicked] = useState(false);
 
     useEffect(() => {
-        if ((letter + value) !== currentMove[0]) {
+        if ((letter + value) === oldMove[0] || (letter + value) === oldMove[1])
+            setBgColor('rgba(246,246,105, 0.5)');
+    }, [oldMove])
+
+    useEffect(() => {
+        if ((letter + value) !== currentMove[0] && (letter + value) !== currentMove[1] && (letter + value) !== oldMove[0] && (letter + value) !== oldMove[1]) {
             setBgColor('');
             setIsClicked(false);
         }
     }, [currentMove])
 
     useEffect(() => {
-        setBgColor(isClicked ? 'rgba(246,246,105, 0.5)' : '');
-    }, [isClicked])
+        if (isClicked && moveErr === true)
+            setBgColor('rgba(217, 30, 24, 1)');
+        else if (isClicked && moveErr === false)
+            setBgColor('rgba(246,246,105, 0.5)');
+        else
+            setBgColor('');
+    }, [isClicked, moveErr])
 
 
     const dispCellInfos = (e) => {

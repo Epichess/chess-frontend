@@ -8,6 +8,8 @@ export default function Board() {
     const [currentMove, setCurrentMove] = useState([]);
     const [resetIsClicked, setResetIsClicked] = useState(false);
 
+    const [moveErr, setMoveErr] = useState(false);
+
     useEffect(() => {
         console.log('current move: ', currentMove);
     }, [currentMove])
@@ -20,14 +22,24 @@ export default function Board() {
         if (currentMove.length === 0 && currentMove[0] !== value) {
             setCurrentMove([value])
         }
-        else if (currentMove.length === 1 && currentMove[0] !== value) {
+        else if (currentMove.length === 1 && currentMove[0] !== value || moveErr === true) {
+            if (moveErr === true) {
+                setMoveErr(false);
+                setCurrentMove([value]);
+                return;
+            }
+            else
+                setCurrentMove([...currentMove, value]);
             const ApiRes = 'ok';
             if (ApiRes === 'ok') {
+                console.log('server said OK');
                 setOldMove([...currentMove, value]);
                 setCurrentMove([]);
             }
             else {
+                console.log('server said KO');
                 //afficher des background en rouge
+                setMoveErr(true);
             }
 
         }
@@ -40,14 +52,14 @@ export default function Board() {
 
     return (
         <Grid className="Board">
-            <GameRow value={8} sentValueToParent={receiveChildValue} currentMove={currentMove}/>
-            <GameRow value={7} sentValueToParent={receiveChildValue} currentMove={currentMove}/>
-            <GameRow value={6} sentValueToParent={receiveChildValue} currentMove={currentMove}/>
-            <GameRow value={5} sentValueToParent={receiveChildValue} currentMove={currentMove}/>
-            <GameRow value={4} sentValueToParent={receiveChildValue} currentMove={currentMove}/>
-            <GameRow value={3} sentValueToParent={receiveChildValue} currentMove={currentMove}/>
-            <GameRow value={2} sentValueToParent={receiveChildValue} currentMove={currentMove}/>
-            <GameRow value={1} sentValueToParent={receiveChildValue} displayLetter={true} currentMove={currentMove}/ >
+            <GameRow value={8} sentValueToParent={receiveChildValue} currentMove={currentMove} oldMove={oldMove} moveErr={moveErr}/>
+            <GameRow value={7} sentValueToParent={receiveChildValue} currentMove={currentMove} oldMove={oldMove} moveErr={moveErr}/>
+            <GameRow value={6} sentValueToParent={receiveChildValue} currentMove={currentMove} oldMove={oldMove} moveErr={moveErr}/>
+            <GameRow value={5} sentValueToParent={receiveChildValue} currentMove={currentMove} oldMove={oldMove} moveErr={moveErr}/>
+            <GameRow value={4} sentValueToParent={receiveChildValue} currentMove={currentMove} oldMove={oldMove} moveErr={moveErr}/>
+            <GameRow value={3} sentValueToParent={receiveChildValue} currentMove={currentMove} oldMove={oldMove} moveErr={moveErr}/>
+            <GameRow value={2} sentValueToParent={receiveChildValue} currentMove={currentMove} oldMove={oldMove} moveErr={moveErr}/>
+            <GameRow value={1} sentValueToParent={receiveChildValue} displayLetter={true} currentMove={currentMove} oldMove={oldMove} moveErr={moveErr}/>
         </Grid>
     );
 }
