@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import PropTypes from 'prop-types';
 import './BoardCell.scss';
 import Grid from "@material-ui/core/Grid";
@@ -14,8 +14,8 @@ import bn from '../../../Assets/Pieces/bn.svg';
 import bb from '../../../Assets/Pieces/bb.svg';
 import bq from '../../../Assets/Pieces/bq.svg';
 import bk from '../../../Assets/Pieces/bk.svg';
-
 import { useCallback } from 'react'
+import { GameContext } from '../../../Context/gameContext';
 
 
 const pieceAssoc = {
@@ -34,6 +34,9 @@ const pieceAssoc = {
 }
 
 const BoardCell = ({value, displayNb = false, letter, dispLetter, piece, sentValueToParent, currentMove, oldMove, moveErr}) => {
+
+    const gameContext = useContext(GameContext)
+
     const [bgColor, setBgColor] = useState('');
     const [isClicked, setIsClicked] = useState(false);
 

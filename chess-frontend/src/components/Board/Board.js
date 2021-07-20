@@ -1,14 +1,18 @@
 import './Board.scss';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import Grid from '@material-ui/core/Grid';
 import GameRow from "./BoardRow/GameRow";
+import { GameContext } from '../../Context/gameContext';
 
 export default function Board() {
     const [oldMove, setOldMove] = useState([]);
     const [currentMove, setCurrentMove] = useState([]);
     const [resetIsClicked, setResetIsClicked] = useState(false);
-
     const [moveErr, setMoveErr] = useState(false);
+
+    const gameContext = useContext(GameContext)
+    
+    useEffect(() => console.log(gameContext.exists), [])
 
     useEffect(() => {
         console.log('current move: ', currentMove);
@@ -65,6 +69,7 @@ export default function Board() {
 
 const Boarde = () => {
     const initialBoard = [
+        // a utiliser avec h8 comme coordonnées
         // starting square, piece type, owner, id
         [0, 'Rook', 'black', 'br1'],
         [1, 'Knight', 'black', 'bh1'],

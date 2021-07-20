@@ -1,10 +1,15 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import PropTypes from 'prop-types';
 import './GameRow.scss';
 import Grid from "@material-ui/core/Grid";
 import BoardCell from "../BoardCell/BoardCell";
+import { GameContext } from '../../../Context/gameContext';
 
 const GameRow = ({value, displayLetter = false, sentValueToParent, currentMove, oldMove, moveErr}) => {
+    const gameContext = useContext(GameContext)
+
+    //gameContext.board[value][0]
+
     const receiveChildValue = (value) => {
         sentValueToParent(value);
     };
